@@ -1,0 +1,531 @@
+body {
+    background-color: #eee
+}
+.page-btn i {
+  color : #2EA2C6
+}
+.page-btn:active i{
+  color: #227791;
+}
+.page-btn::before i{
+  color: #98d4e7;
+}
+.box-shadow {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-image: linear-gradient( 120deg ,#EDEDED ,#eeeeee );
+  
+}
+.box-shadow-white {
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 0.5px solid #a5aec0;
+  background-color: #fff;
+}
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.card-course {
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.card-course:hover {
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.c-details span {
+    font-weight: 300;
+    font-size: 13px
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 39px
+}
+
+.badge span {
+    background-color: #fffbec;
+    width: 60px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    color: #fed85d;
+    justify-content: center;
+    align-items: center
+}
+
+.progress {
+    height: 10px;
+    border-radius: 10px
+}
+
+.progress div {
+    background-color: green;
+}
+
+.text1 {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.text2 {
+    color: #a5aec0
+}
+
+/* clock css */
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  --hue-color: 240;
+
+  --first-color: hsl(var(--hue-color), 53%, 49%);
+  --title-color: hsl(var(--hue-color), 53%, 15%);
+  --text-color: hsl(var(--hue-color), 12%, 35%);
+  --text-color-light: hsl(var(--hue-color), 12%, 65%);
+  --white-color: #FFF;
+  --body-color: hsl(var(--hue-color), 24%, 94%);
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --biggest-font-size: 3rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+  --tiny-font-size: .625rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+
+  /*========== Margenes Bottom ==========*/
+  --mb-0-25: .25rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2-5: 2.5rem;
+
+  /*========== z index ==========*/
+  --z-normal: 1;
+  --z-tooltip: 10;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --biggest-font-size: 3.5rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+    --tiny-font-size: .75rem;
+  }
+}
+
+/*========== Variables Dark theme ==========*/
+body.dark-theme {
+  --title-color: hsl(var(--hue-color), 12%, 95%);
+  --text-color: hsl(var(--hue-color), 12%, 75%);
+  --body-color: hsl(var(--hue-color), 10%, 16%);
+}
+
+/*========== Button Dark/Light ==========*/
+.clock__theme {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  display: flex;
+  padding: .25rem;
+  border-radius: 50%;
+  box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1), 
+              inset 1px 1px 1px hsla(var(--hue-color), 30%, 86%, 1);
+  color: var(--first-color);
+  cursor: pointer;
+  transition: .4s; 
+}
+
+/*========== Box shadow Dark theme ==========*/
+.dark-theme .clock__circle {
+  box-shadow: 6px 6px 16px hsla(var(--hue-color), 8%, 12%, 1), 
+              -6px -6px 16px hsla(var(--hue-color), 8%, 20%, 1), 
+              inset -6px -6px 16px hsla(var(--hue-color), 8%, 20%, 1), 
+              inset 6px 6px 12px hsla(var(--hue-color), 8%, 12%, 1);
+}
+
+.dark-theme .clock__theme {
+  box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 8%, 20%, 1), 
+              inset 1px 1px 1px hsla(var(--hue-color), 8%, 12%, 1);
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  transition: .4s; 
+}
+
+a {
+  text-decoration: none;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 968px;
+  margin-left: var(--mb-1);
+  margin-right: var(--mb-1);
+}
+
+.grid {
+  display: grid;
+}
+
+/*=============== CLOCK ===============*/
+.clock__container {
+  height: 30vh;
+  grid-template-rows: 1fr max-content;
+  margin-top:32px;
+}
+
+.clock__circle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  box-shadow: -6px -6px 16px var(--white-color), 
+              6px 6px 16px hsla(var(--hue-color), 30%, 86%, 1), 
+              inset 6px 6px 16px hsla(var(--hue-color), 30%, 86%, 1), 
+              inset -6px -6px 16px var(--white-color);
+  border-radius: 50%;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .4s; 
+}
+
+.clock__content {
+  align-self: flex-start;
+  row-gap: 0.1rem;
+}
+
+.clock__twelve, 
+.clock__three, 
+.clock__six, 
+.clock__nine {
+  position: absolute;
+  width: 1rem;
+  height: 1px;
+  background-color: var(--text-color-light);
+}
+
+.clock__twelve, 
+.clock__six {
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.clock__twelve {
+  top: 1.25rem;
+  left: 50%;
+}
+
+.clock__three {
+  top: 50%;
+  right: .75rem;
+}
+
+.clock__six {
+  bottom: 1.25rem;
+  left: 50%;
+}
+
+.clock__nine {
+  left: .75rem;
+  top: 50%;
+}
+
+.clock__rounder {
+  width: .75rem;
+  height: .75rem;
+  background-color: var(--first-color);
+  border-radius: 50%;
+  border: 2px solid var(--body-color);
+  z-index: var(--z-tooltip);
+}
+
+.clock__hour, 
+.clock__minutes, 
+.clock__seconds {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+
+.clock__hour {
+  width: 105px;
+  height: 105px;
+}
+
+.clock__hour::before {
+  content: '';
+  position: absolute;
+  background-color: var(--text-color);
+  width: .25rem;
+  height: 3rem;
+  border-radius: .75rem;
+  z-index: var(--z-normal);
+}
+
+.clock__minutes {
+  width: 136px;
+  height: 136px;
+}
+
+.clock__minutes::before {
+  content: '';
+  position: absolute;
+  background-color: var(--text-color);
+  width: .25rem;
+  height: 4rem;
+  border-radius: .75rem;
+  z-index: var(--z-normal);
+}
+
+.clock__seconds {
+  width: 130px;
+  height: 130px;
+}
+
+.clock__seconds::before {
+  content: '';
+  position: absolute;
+  background-color: var(--first-color);
+  width: .125rem;
+  height: 5rem;
+  border-radius: .75rem;
+  z-index: var(--z-normal);
+}
+
+.clock__logo {
+  width: max-content;
+  justify-self: center;
+  margin-bottom: var(--mb-2-5);
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
+  color: var(--text-color-light);
+  transition: .3s;
+}
+
+.clock__logo:hover {
+  color: var(--first-color);
+}
+
+.clock__text {
+  display: flex;
+  justify-content: center;
+}
+
+.clock__text-hour, 
+.clock__text-minutes {
+  font-size: var(--biggest-font-size);
+  font-weight: var(--font-medium);
+  color: var(--title-color);
+}
+
+.clock__text-ampm {
+  font-size: var(--tiny-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  margin-left: var(--mb-0-25);
+}
+
+.clock__date {
+  text-align: center;
+  font-size: 36px;
+  font-weight: var(--font-medium);
+}
+
+/*=============== MEDIA QUERIES ===============*/
+/* For large devices */
+@media screen and (min-width: 968px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .clock__logo {
+    margin-bottom: 3rem;
+  }
+}
+/* calendar css */
+#myCalendarWrapper {
+  width: 33em;
+  border: 1px dashed black;
+  padding: 16px;
+  position: relative;
+  display: block;margin: 0 auto;
+  font-size: 1rem;
+}
+
+#myCalendarWrapper:before {
+  position: absolute;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 2.4rem);
+  font-size: 1.2rem;
+  background-color: rgba(93, 93, 93, 0.2);
+  padding: 0.5rem 1rem 0.4rem;
+  color: rgb(233, 72, 99);
+}
+
+#calendar-wrapper {
+  display: grid;
+  grid-template-rows: 1.5em 0.5fr;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  font-size: inherit;
+}
+
+#calendar-wrapper header {
+  grid-row: 1/2;
+  font-size: 1.64em;
+  box-sizing: inherit;
+}
+
+#calendar-wrapper header h4 {
+  padding: 0;
+  margin: 0;
+}
+
+#calendar {
+  display: grid;
+  grid-template-columns: 1fr 6em;
+  grid-template-rows: 1.5em 1fr;
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+#calendar #calendar-days,
+#calendar #calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  padding: 0 2px;
+  box-sizing: inherit;
+  margin: 0;
+}
+
+#calendar #calendar-days {
+  justify-items: center;
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+
+#calendar #calendar-grid {
+  grid-template-rows: repeat(6, 1fr);
+  justify-items: flex-start;
+  grid-row: 2/-1;
+  grid-column: 1/2;
+  width: 100%;
+}
+
+#calendar #calendar-grid > time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0.4em;
+  padding: 1em 0.2em;
+  width: 80%;
+  background-color: rgba(108, 108, 108, 0.02);
+  border-radius: 3px;
+  border: 2px solid transparent;
+  transition: box-shadow 200ms, border 100ms;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0);
+  box-sizing: inherit;
+}
+
+#calendar #calendar-grid time.selected,
+#calendar #calendar-grid time.selected:focus {
+  outline: none;
+  border: 2px solid #c64949;
+  box-sizing: inherit;
+}
+
+#calendar #calendar-grid time.disabled,
+#calendar #calendar-grid time.disabled:focus {
+  outline: none;
+  border: 2px solid transparent;
+  box-sizing: inherit;
+  cursor: not-allowed;
+  background-color: rgba(30, 39, 51, 0.2);
+  box-shadow: 1px 1px rgba(0, 0, 0, 0);
+
+}
+
+#calendar #calendar-grid > *:hover {
+  border: 2px solid rgba(72, 72, 72, 0.5);
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  box-sizing: inherit;
+}
+
+#calendar #navigation-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  grid-row: 2/-1;
+  grid-column: 2/-1;
+  box-sizing: inherit;
+  padding: 1em 0 3.5em;
+  margin: 0;
+}
+
+#calendar #navigation-wrapper button {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  font-size: 3em;
+  width: 1.6em;    
+  box-sizing: inherit;
+  padding: 0.1em;
+  margin: 0;
+}
+
+#calendar #navigation-wrapper button:hover {
+  opacity: 0.75;
+}
+
+
+#calendar #navigation-wrapper button svg {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 1.6em;
+  display: block;
+  box-sizing: inherit;
+}
+
+#calendar #navigation-wrapper button:first-of-type {
+  transform: rotate(180deg);
+}
+

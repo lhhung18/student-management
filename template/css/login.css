@@ -1,0 +1,23 @@
+
+body, html {
+    height: 100%;
+  }
+#refresh-btn i {
+  cursor: pointer;
+  color: #43919b;
+}
+#refresh-btn:active i {
+  cursor: pointer;
+  color: #36757d;
+}
+
+.copyright {
+  padding: 15px 0 0 0;
+}
+.copyright {
+  padding: 10px 15px 0 15px;
+}
+
+footer {
+    background-color: #EEEEEE;
+}
